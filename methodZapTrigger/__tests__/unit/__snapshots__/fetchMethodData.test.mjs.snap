@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`fetchMethodData function grabs invoice entries with a balance due 1`] = `
+{
+  "count": Any<Number>,
+  "value": Any<Array>,
+}
+`;

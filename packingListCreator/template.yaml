@@ -1,0 +1,47 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: >-
+  packing-list-creator
+Transform:
+  - AWS::Serverless-2016-10-31
+
+Resources:
+  createPackingListFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: createPackingListHandler.handler
+      Runtime: nodejs18.x
+      Architectures:
+        - x86_64
+      MemorySize: 1536
+      Timeout: 900
+      Description: Creates a packing list that is sent to PipeDrive
+      Events:
+        CreatePackingList:
+          Type: Api
+          Properties:
+            Path: /
+            Method: GET
+
+  ApplicationResourceGroup:
+    Type: AWS::ResourceGroups::Group
+    Properties:
+      Name:
+        Fn::Sub: ApplicationInsights-SAM-${AWS::StackName}
+      ResourceQuery:
+        Type: CLOUDFORMATION_STACK_1_0
+  ApplicationInsightsMonitoring:
+    Type: AWS::ApplicationInsights::Application
+    Properties:
+      ResourceGroupName:
+        Ref: ApplicationResourceGroup
+      AutoConfigurationEnabled: 'true'
+
+Outputs:
+  CreatePackingListApi:
+    Description: API Gateway endpoint URL for Prod stage
+    Value: !Sub 'https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/'
+Globals:
+  Function:
+    Tracing: Active
+  Api:
+    TracingEnabled: true

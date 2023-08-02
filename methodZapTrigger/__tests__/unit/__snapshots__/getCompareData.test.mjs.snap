@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getCompareData function grabs compare data from a .json file within an S3 bucket 1`] = `
+{
+  "count": Any<Number>,
+  "value": Any<Array>,
+}
+`;

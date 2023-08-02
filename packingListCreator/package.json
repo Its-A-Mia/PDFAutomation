@@ -1,0 +1,21 @@
+{
+  "name": "packing-list-creator",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node ./packingListCreatorPkg/createPackingList.js"
+  },
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.188.0",
+    "@aws-sdk/lib-dynamodb": "^3.188.0",
+    "axios": "^1.4.0",
+    "js-base64": "^3.7.5",
+    "node-fetch": "^3.3.1",
+    "pdf-lib": "^1.17.1"
+  },
+  "devDependencies": {
+    "aws-sdk-client-mock": "^2.0.0",
+    "eslint": "^8.38.0"
+  }
+}
