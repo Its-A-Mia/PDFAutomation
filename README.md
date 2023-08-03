@@ -2,7 +2,7 @@
 Microservice integration that automates packing list delivery to a company's fulfillment chain.
 
 >IMPORTANT
->This code has been scrubbed of sensitive data, and due to the data needing to be fetched from internal servers, the code will not run if ran. It is currently intended to showcase the architecture and code. (8/2/23) Test data will be put together soon in order to showcase a working model.
+>This code has been scrubbed of sensitive data, and due to the data needing to be fetched from internal servers, the code will not run. It is currently intended to showcase the architecture and code. (8/2/23) Test data will be put together soon in order to showcase a working model.
 
 ## Overview and Program Flow
 The trigger function is hosted on AWS Lambda and is fired off based on a schedule. It compares an old snapshot of invoice data against fresh data, and if there are discrepancies, the snapshot is updated. If the discrepant invoice shows a paid balance, the PDF creator Lambda function fires, delivering the PDF to the companies Warehouse inbox for fulfillment.
